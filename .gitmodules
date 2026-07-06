@@ -1,0 +1,48 @@
+[submodule "src/kinnector-core"]
+	path = src/kinnector-core
+	url = https://github.com/kinnector/kinnector-core.git
+[submodule "src/kinnector-agent"]
+	path = src/kinnector-agent
+	url = https://github.com/kinnector/kinnector-agent.git
+[submodule "src/kinnector-desktop"]
+	path = src/kinnector-desktop
+	url = https://github.com/kinnector/kinnector-desktop.git
+[submodule "src/kinnector-cli"]
+	path = src/kinnector-cli
+	url = https://github.com/kinnector/kinnector-cli.git
+[submodule "src/kinnector-warden"]
+	path = src/kinnector-warden
+	url = https://github.com/kinnector/kinnector-warden.git
+[submodule "src/kinnector-wordpress"]
+	path = src/kinnector-wordpress
+	url = https://github.com/kinnector/kinnector-wordpress.git
+[submodule "src/kinnector-protect-community"]
+	path = src/kinnector-protect-community
+	url = https://github.com/kinnector/kinnector-protect-community.git
+[submodule "src/kinnector-installer"]
+	path = src/kinnector-installer
+	url = https://github.com/kinnector/kinnector-installer.git
+[submodule "src/kinnector-docker"]
+	path = src/kinnector-docker
+	url = https://github.com/kinnector/kinnector-docker.git
+[submodule "src/kinnector-docs"]
+	path = src/kinnector-docs
+	url = https://github.com/kinnector/kinnector-docs.git
+[submodule "src/kinnector-design"]
+	path = src/kinnector-design
+	url = https://github.com/kinnector/kinnector-design.git
+[submodule "src/kinnector-config"]
+	path = src/kinnector-config
+	url = https://github.com/kinnector/kinnector-config.git
+[submodule "src/kinnector-jvmti"]
+	path = src/kinnector-jvmti
+	url = https://github.com/kinnector/kinnector-jvmti.git
+[submodule "src/kinnector-collect"]
+	path = src/kinnector-collect
+	url = https://github.com/kinnector/kinnector-collect.git
+[submodule "src/warden"]
+	path = src/warden
+	url = https://github.com/kinnector/warden.git
+[submodule "src/wpwarden"]
+	path = src/wpwarden
+	url = https://github.com/kinnector/wpwarden.git

@@ -12,7 +12,7 @@
 
 Kinnector is a modern, high-performance security and telemetry platform designed to monitor systems, enforce heuristic security policies, and manage distributed fleets of agents. By capturing low-level system calls, kernel-level events, and application runtimes, Kinnector provides real-time threat intelligence and active containment capabilities.
 
-This portal repository serves as the central hub, consolidating all public components of the Kinnector ecosystem as Git submodules directly at the root of the workspace.
+This portal repository serves as the central hub, consolidating all public components of the Kinnector ecosystem as Git submodules located under the `src/` directory.
 
 ---
 
@@ -59,19 +59,19 @@ Select the Kinnector product line that matches your deployment and security requ
 For local endpoint protection, threat intelligence gathering, and containment rules execution directly on client machines (Windows, macOS, Linux).
 
 ```
-[System Events] ──> [kinnector-core] ──> [kinnector-agent (Rust)] ──> [Containment Action]
-                                                 │
-                                                 ├──> [kinnector-desktop (Svelte)]
-                                                 └──> [kinnector-cli]
+[System Events] ──> [src/kinnector-core] ──> [src/kinnector-agent (Rust)] ──> [Containment Action]
+                                                      │
+                                                      ├──> [src/kinnector-desktop (Svelte)]
+                                                      └──> [src/kinnector-cli]
 ```
 
 ### Primary Repositories & Submodules
-* **[kinnector-core](kinnector-core)**: Low-level event processing engine extracting telemetry from ETW (Windows), eBPF (Linux), and EndpointSecurity (macOS).
-* **[kinnector-agent](kinnector-agent)**: The central daemon written in Rust that evaluates behavioral rules against telemetry streams.
-* **[kinnector-desktop](kinnector-desktop)**: High-performance administration dashboard built with Svelte 5, Vite, and Tailwind CSS.
-* **[kinnector-cli](kinnector-cli)**: Fast command line interface for local rule configuration and status checking.
-* **[kinnector-installer](kinnector-installer)**: Scripts and packaging assets (DEB, RPM, MSI) for cross-platform agent deployments.
-* **[kinnector-jvmti](kinnector-jvmti)**: Java Virtual Machine Tool Interface agent for application-level monitoring.
+* **[kinnector-core](src/kinnector-core)**: Low-level event processing engine extracting telemetry from ETW (Windows), eBPF (Linux), and EndpointSecurity (macOS).
+* **[kinnector-agent](src/kinnector-agent)**: The central daemon written in Rust that evaluates behavioral rules against telemetry streams.
+* **[kinnector-desktop](src/kinnector-desktop)**: High-performance administration dashboard built with Svelte 5, Vite, and Tailwind CSS.
+* **[kinnector-cli](src/kinnector-cli)**: Fast command line interface for local rule configuration and status checking.
+* **[kinnector-installer](src/kinnector-installer)**: Scripts and packaging assets (DEB, RPM, MSI) for cross-platform agent deployments.
+* **[kinnector-jvmti](src/kinnector-jvmti)**: Java Virtual Machine Tool Interface agent for application-level monitoring.
 
 ---
 
@@ -80,16 +80,16 @@ For local endpoint protection, threat intelligence gathering, and containment ru
 For server-side operators managing large groups of distributed endpoints, coordinating remote rules, and querying real-time telemetry.
 
 ```
-[kinnector-agent] ──(HTTPS/gRPC)──> [kinnector-warden (Warden Server)]
-                                             │
-                                             ├──> [kinnector-docker]
-                                             └──> [kinnector-collect]
+[kinnector-agent] ──(HTTPS/gRPC)──> [src/kinnector-warden (Warden Server)]
+                                                  │
+                                                  ├──> [src/kinnector-docker]
+                                                  └──> [src/kinnector-collect]
 ```
 
 ### Primary Repositories & Submodules
-* **[kinnector-warden](kinnector-warden)** (aka **[warden](warden)**): The server-side receiver and administrator that manages agent connections, coordinates security rule distribution, and routes alerts.
-* **[kinnector-docker](kinnector-docker)**: Dockerfiles and compose setups for containerized Warden instances and network sidecars.
-* **[kinnector-collect](kinnector-collect)**: Shared helper scripts and utilities for database queries and data parsing.
+* **[kinnector-warden](src/kinnector-warden)** (aka **[warden](src/warden)**): The server-side receiver and administrator that manages agent connections, coordinates security rule distribution, and routes alerts.
+* **[kinnector-docker](src/kinnector-docker)**: Dockerfiles and compose setups for containerized Warden instances and network sidecars.
+* **[kinnector-collect](src/kinnector-collect)**: Shared helper scripts and utilities for database queries and data parsing.
 
 ---
 
@@ -98,11 +98,11 @@ For server-side operators managing large groups of distributed endpoints, coordi
 For protecting WordPress instances from remote file inclusion, arbitrary code execution, and database manipulation.
 
 ```
-[HTTP Request] ──> [WordPress Kernel] ──> [wpwarden (PHP Plugin)] ──> [Heuristic Validation]
+[HTTP Request] ──> [WordPress Kernel] ──> [src/wpwarden (PHP Plugin)] ──> [Heuristic Validation]
 ```
 
 ### Primary Repositories & Submodules
-* **[kinnector-wordpress](kinnector-wordpress)** (aka **[wpwarden](wpwarden)**): The plug-and-play WordPress security plugin that hooks runtime operations to intercept PHP exploits before execution.
+* **[kinnector-wordpress](src/kinnector-wordpress)** (aka **[wpwarden](src/wpwarden)**): The plug-and-play WordPress security plugin that hooks runtime operations to intercept PHP exploits before execution.
 
 ---
 
@@ -110,10 +110,10 @@ For protecting WordPress instances from remote file inclusion, arbitrary code ex
 
 Common libraries, design systems, and database configurations shared across all Kinnector products:
 
-* **[kinnector-config](kinnector-config)**: High-performance configuration library written in Rust and C++ for parsing and validating cryptographically signed rules.
-* **[kinnector-protect-community](kinnector-protect-community)**: The central catalog of open security rules, attack indicators, allowlists, and detection signatures.
-* **[kinnector-design](kinnector-design)**: Atmospheric design spec, core typography rules, and shared asset sheets.
-* **[kinnector-docs](kinnector-docs)**: Developer references, specifications, and platform architecture guides.
+* **[kinnector-config](src/kinnector-config)**: High-performance configuration library written in Rust and C++ for parsing and validating cryptographically signed rules.
+* **[kinnector-protect-community](src/kinnector-protect-community)**: The central catalog of open security rules, attack indicators, allowlists, and detection signatures.
+* **[kinnector-design](src/kinnector-design)**: Atmospheric design spec, core typography rules, and shared asset sheets.
+* **[kinnector-docs](src/kinnector-docs)**: Developer references, specifications, and platform architecture guides.
 
 ---
 

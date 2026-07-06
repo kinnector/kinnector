@@ -28,61 +28,61 @@ all: core agent cli desktop config warden
 
 core:
 	@echo -e "$(BLUE)Building kinnector-core...$(RESET)"
-	@if [ -d "kinnector-core" ]; then \
-		mkdir -p kinnector-core/build && \
-		cd kinnector-core/build && \
+	@if [ -d "src/kinnector-core" ]; then \
+		mkdir -p src/kinnector-core/build && \
+		cd src/kinnector-core/build && \
 		cmake -DCMAKE_BUILD_TYPE=Release .. && \
 		make -j$$(nproc); \
 	else \
-		echo -e "$(YELLOW)Warning: kinnector-core directory not found. Did you clone with submodules?$(RESET)"; \
+		echo -e "$(YELLOW)Warning: src/kinnector-core directory not found. Did you clone with submodules?$(RESET)"; \
 	fi
 
 agent:
 	@echo -e "$(BLUE)Building kinnector-agent...$(RESET)"
-	@if [ -d "kinnector-agent" ]; then \
-		cd kinnector-agent && cargo build --release; \
+	@if [ -d "src/kinnector-agent" ]; then \
+		cd src/kinnector-agent && cargo build --release; \
 	else \
-		echo -e "$(YELLOW)Warning: kinnector-agent directory not found. Did you clone with submodules?$(RESET)"; \
+		echo -e "$(YELLOW)Warning: src/kinnector-agent directory not found. Did you clone with submodules?$(RESET)"; \
 	fi
 
 cli:
 	@echo -e "$(BLUE)Building kinnector-cli...$(RESET)"
-	@if [ -d "kinnector-cli" ]; then \
-		cd kinnector-cli && cargo build --release; \
+	@if [ -d "src/kinnector-cli" ]; then \
+		cd src/kinnector-cli && cargo build --release; \
 	else \
-		echo -e "$(YELLOW)Warning: kinnector-cli directory not found. Did you clone with submodules?$(RESET)"; \
+		echo -e "$(YELLOW)Warning: src/kinnector-cli directory not found. Did you clone with submodules?$(RESET)"; \
 	fi
 
 desktop:
 	@echo -e "$(BLUE)Building kinnector-desktop...$(RESET)"
-	@if [ -d "kinnector-desktop" ]; then \
-		cd kinnector-desktop && npm install && npm run build; \
+	@if [ -d "src/kinnector-desktop" ]; then \
+		cd src/kinnector-desktop && npm install && npm run build; \
 	else \
-		echo -e "$(YELLOW)Warning: kinnector-desktop directory not found. Did you clone with submodules?$(RESET)"; \
+		echo -e "$(YELLOW)Warning: src/kinnector-desktop directory not found. Did you clone with submodules?$(RESET)"; \
 	fi
 
 config:
 	@echo -e "$(BLUE)Building kinnector-config...$(RESET)"
-	@if [ -d "kinnector-config" ]; then \
-		cd kinnector-config && cargo build --release; \
+	@if [ -d "src/kinnector-config" ]; then \
+		cd src/kinnector-config && cargo build --release; \
 	else \
-		echo -e "$(YELLOW)Warning: kinnector-config directory not found. Did you clone with submodules?$(RESET)"; \
+		echo -e "$(YELLOW)Warning: src/kinnector-config directory not found. Did you clone with submodules?$(RESET)"; \
 	fi
 
 warden:
 	@echo -e "$(BLUE)Building kinnector-warden...$(RESET)"
-	@if [ -d "kinnector-warden" ]; then \
-		cd kinnector-warden && cargo build --release; \
+	@if [ -d "src/kinnector-warden" ]; then \
+		cd src/kinnector-warden && cargo build --release; \
 	else \
-		echo -e "$(YELLOW)Warning: kinnector-warden directory not found. Did you clone with submodules?$(RESET)"; \
+		echo -e "$(YELLOW)Warning: src/kinnector-warden directory not found. Did you clone with submodules?$(RESET)"; \
 	fi
 
 clean:
 	@echo -e "$(BLUE)Cleaning build artifacts...$(RESET)"
-	@if [ -d "kinnector-core/build" ]; then rm -rf kinnector-core/build; fi
-	@if [ -d "kinnector-agent" ]; then cd kinnector-agent && cargo clean; fi
-	@if [ -d "kinnector-cli" ]; then cd kinnector-cli && cargo clean; fi
-	@if [ -d "kinnector-desktop/dist" ]; then rm -rf kinnector-desktop/dist kinnector-desktop/node_modules; fi
-	@if [ -d "kinnector-config" ]; then cd kinnector-config && cargo clean; fi
-	@if [ -d "kinnector-warden" ]; then cd kinnector-warden && cargo clean; fi
+	@if [ -d "src/kinnector-core/build" ]; then rm -rf src/kinnector-core/build; fi
+	@if [ -d "src/kinnector-agent" ]; then cd src/kinnector-agent && cargo clean; fi
+	@if [ -d "src/kinnector-cli" ]; then cd src/kinnector-cli && cargo clean; fi
+	@if [ -d "src/kinnector-desktop/dist" ]; then rm -rf src/kinnector-desktop/dist src/kinnector-desktop/node_modules; fi
+	@if [ -d "src/kinnector-config" ]; then cd src/kinnector-config && cargo clean; fi
+	@if [ -d "src/kinnector-warden" ]; then cd src/kinnector-warden && cargo clean; fi
 	@echo -e "$(GREEN)✔ All build artifacts cleaned.$(RESET)"
