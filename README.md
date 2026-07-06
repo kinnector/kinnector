@@ -12,7 +12,7 @@
 
 Kinnector is a modern, high-performance security and telemetry platform designed to monitor systems, enforce heuristic security policies, and manage distributed fleets of agents. By capturing low-level system calls, kernel-level events, and application runtimes, Kinnector provides real-time threat intelligence and active containment capabilities.
 
-This portal repository serves as the central hub, consolidating all public components of the Kinnector ecosystem as Git submodules in one place.
+This portal repository serves as the central hub, consolidating all public components of the Kinnector ecosystem as Git submodules directly at the root of the workspace.
 
 ---
 
@@ -66,12 +66,12 @@ For local endpoint protection, threat intelligence gathering, and containment ru
 ```
 
 ### Primary Repositories & Submodules
-* **[kinnector-core](submodules/kinnector-core)**: Low-level event processing engine extracting telemetry from ETW (Windows), eBPF (Linux), and EndpointSecurity (macOS).
-* **[kinnector-agent](submodules/kinnector-agent)**: The central daemon written in Rust that evaluates behavioral rules against telemetry streams.
-* **[kinnector-desktop](submodules/kinnector-desktop)**: High-performance administration dashboard built with Svelte 5, Vite, and Tailwind CSS.
-* **[kinnector-cli](submodules/kinnector-cli)**: Fast command line interface for local rule configuration and status checking.
-* **[kinnector-installer](submodules/kinnector-installer)**: Scripts and packaging assets (DEB, RPM, MSI) for cross-platform agent deployments.
-* **[kinnector-jvmti](submodules/kinnector-jvmti)**: Java Virtual Machine Tool Interface agent for application-level monitoring.
+* **[kinnector-core](kinnector-core)**: Low-level event processing engine extracting telemetry from ETW (Windows), eBPF (Linux), and EndpointSecurity (macOS).
+* **[kinnector-agent](kinnector-agent)**: The central daemon written in Rust that evaluates behavioral rules against telemetry streams.
+* **[kinnector-desktop](kinnector-desktop)**: High-performance administration dashboard built with Svelte 5, Vite, and Tailwind CSS.
+* **[kinnector-cli](kinnector-cli)**: Fast command line interface for local rule configuration and status checking.
+* **[kinnector-installer](kinnector-installer)**: Scripts and packaging assets (DEB, RPM, MSI) for cross-platform agent deployments.
+* **[kinnector-jvmti](kinnector-jvmti)**: Java Virtual Machine Tool Interface agent for application-level monitoring.
 
 ---
 
@@ -87,9 +87,9 @@ For server-side operators managing large groups of distributed endpoints, coordi
 ```
 
 ### Primary Repositories & Submodules
-* **[kinnector-warden](submodules/kinnector-warden)** (aka **[warden](submodules/warden)**): The server-side receiver and administrator that manages agent connections, coordinates security rule distribution, and routes alerts.
-* **[kinnector-docker](submodules/kinnector-docker)**: Dockerfiles and compose setups for containerized Warden instances and network sidecars.
-* **[kinnector-collect](submodules/kinnector-collect)**: Shared helper scripts and utilities for database queries and data parsing.
+* **[kinnector-warden](kinnector-warden)** (aka **[warden](warden)**): The server-side receiver and administrator that manages agent connections, coordinates security rule distribution, and routes alerts.
+* **[kinnector-docker](kinnector-docker)**: Dockerfiles and compose setups for containerized Warden instances and network sidecars.
+* **[kinnector-collect](kinnector-collect)**: Shared helper scripts and utilities for database queries and data parsing.
 
 ---
 
@@ -98,11 +98,11 @@ For server-side operators managing large groups of distributed endpoints, coordi
 For protecting WordPress instances from remote file inclusion, arbitrary code execution, and database manipulation.
 
 ```
-[HTTP Request] ──> [WordPress Kernel] ──> [kinnector-wordpress (PHP Plugin)] ──> [Heuristic Validation]
+[HTTP Request] ──> [WordPress Kernel] ──> [wpwarden (PHP Plugin)] ──> [Heuristic Validation]
 ```
 
 ### Primary Repositories & Submodules
-* **[kinnector-wordpress](submodules/kinnector-wordpress)** (aka **[wpwarden](submodules/wpwarden)**): The plug-and-play WordPress security plugin that hooks runtime operations to intercept PHP exploits before execution.
+* **[kinnector-wordpress](kinnector-wordpress)** (aka **[wpwarden](wpwarden)**): The plug-and-play WordPress security plugin that hooks runtime operations to intercept PHP exploits before execution.
 
 ---
 
@@ -110,10 +110,35 @@ For protecting WordPress instances from remote file inclusion, arbitrary code ex
 
 Common libraries, design systems, and database configurations shared across all Kinnector products:
 
-* **[kinnector-config](submodules/kinnector-config)**: High-performance configuration library written in Rust and C++ for parsing and validating cryptographically signed rules.
-* **[kinnector-protect-community](submodules/kinnector-protect-community)**: The central catalog of open security rules, attack indicators, allowlists, and detection signatures.
-* **[kinnector-design](submodules/kinnector-design)**: Atmospheric design spec, core typography rules, and shared asset sheets.
-* **[kinnector-docs](submodules/kinnector-docs)**: Developer references, specifications, and platform architecture guides.
+* **[kinnector-config](kinnector-config)**: High-performance configuration library written in Rust and C++ for parsing and validating cryptographically signed rules.
+* **[kinnector-protect-community](kinnector-protect-community)**: The central catalog of open security rules, attack indicators, allowlists, and detection signatures.
+* **[kinnector-design](kinnector-design)**: Atmospheric design spec, core typography rules, and shared asset sheets.
+* **[kinnector-docs](kinnector-docs)**: Developer references, specifications, and platform architecture guides.
+
+---
+
+## 🛠️ Build Orchestration
+
+A root-level `Makefile` is provided to quickly compile or configure any component from the root of the workspace.
+
+```bash
+# View available build targets and options
+make help
+
+# Build all compilation-required components (core, agent, cli, desktop, config, warden)
+make all
+
+# Build individual components
+make core      # Build C++ telemetry engine
+make agent     # Build Rust agent daemon
+make cli       # Build Rust CLI utility
+make desktop   # Build Svelte/Vite UI dashboard
+make config    # Build Rust rule validation library
+make warden    # Build Rust fleet coordinator
+
+# Clean build artifacts across all subprojects
+make clean
+```
 
 ---
 
@@ -129,14 +154,6 @@ If you have already cloned the repository without submodules, fetch them using:
 
 ```bash
 git submodule update --init --recursive
-```
-
-### Developing a Component
-Navigate to the specific component's subdirectory under `submodules/` and follow the build guidelines in its respective readme. For example, to build the agent locally:
-
-```bash
-cd submodules/kinnector-agent
-cargo build --release
 ```
 
 ---
