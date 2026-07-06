@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="100%" height="auto">
+  <defs>
+    <linearGradient id="bg-desktop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="accent-desktop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-desktop)" rx="12" stroke="#10b981" stroke-width="1.5" opacity="0.8" />
+  
+  <!-- Icon Graphics (Monitor/Computer Security) -->
+  <g transform="translate(200, 95) scale(1.1)">
+    <!-- Monitor Outer -->
+    <rect x="-60" y="-45" width="120" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <!-- Screen Inner -->
+    <rect x="-54" y="-39" width="108" height="63" rx="3" fill="#020617" />
+    <!-- Stand -->
+    <path d="M -15,30 L 15,30 L 10,48 L -10,48 Z" fill="#334155" />
+    <rect x="-30" y="48" width="60" height="4" rx="2" fill="#334155" />
+    <!-- Security Shield Overlay -->
+    <path d="M 0,-15 L 20,-5 L 20,15 C 20,28 0,35 0,35 C 0,35 -20,28 -20,15 L -20,-5 Z" fill="url(#accent-desktop)" opacity="0.9" filter="url(#glow-green)" />
+    <!-- Shield Detail -->
+    <path d="M 0,-10 L 13,-2 L 13,12 C 13,22 0,28 0,28 C 0,28 -13,22 -13,12 L -13,-2 Z" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
+    <!-- Local Pulse Lines -->
+    <path d="M -50,5 L -35,5 L -30,-5 L -25,15 L -20,5 L -5,5" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.6" />
+    <path d="M 5,5 L 20,5 L 25,15 L 30,-5 L 35,5 L 50,5" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.6" />
+  </g>
+  
+  <!-- Typography -->
+  <text x="200" y="195" font-family="'Inter', system-ui, sans-serif" font-weight="800" font-size="22" fill="#ffffff" text-anchor="middle" letter-spacing="1">ENDPOINT &amp; DESKTOP</text>
+  <text x="200" y="220" font-family="'Inter', system-ui, sans-serif" font-weight="500" font-size="12" fill="#64748b" text-anchor="middle">Local Telemetry, Agent Daemon &amp; CLI</text>
+</svg>
