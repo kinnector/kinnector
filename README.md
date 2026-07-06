@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.svg" alt="Kinnector Unified Threat Intelligence" width="100%" />
+  <img src="assets/hero.svg" alt="**kinnector** Unified Threat Intelligence" width="100%" />
 </p>
 
 <p align="center">
@@ -10,21 +10,21 @@
 
 ---
 
-Kinnector is a modern, high-performance security and telemetry platform designed to monitor systems, enforce heuristic security policies, and manage distributed fleets of agents. By capturing low-level system calls, kernel-level events, and application runtimes, Kinnector provides real-time threat intelligence and active containment capabilities.
+**kinnector** is a modern, high-performance security and telemetry platform designed to monitor systems, enforce heuristic security policies, and manage distributed fleets of agents. By capturing low-level system calls, kernel-level events, and application runtimes, **kinnector** provides real-time threat intelligence and active containment capabilities.
 
-This portal repository serves as the central hub, consolidating all public components of the Kinnector ecosystem as Git submodules located under the `src/` directory.
+This portal repository serves as the central hub, consolidating all public components of the **kinnector** ecosystem as Git submodules located under the `src/` directory.
 
 ---
 
 ## 🧭 Product Navigation
 
-Select the Kinnector product line that matches your deployment and security requirements:
+Select the **kinnector** product line that matches your deployment and security requirements:
 
 <table align="center" border="0" cellpadding="10" cellspacing="0" width="100%">
   <tr>
     <td align="center" valign="top" width="33%">
       <a href="#-endpoint--desktop-stack">
-        <img src="assets/desktop.svg" alt="Kinnector Desktop" width="100%" style="border-radius: 8px; border: 1px solid #10b981;" />
+        <img src="assets/desktop.svg" alt="**kinnector** Desktop" width="100%" style="border-radius: 8px; border: 1px solid #10b981;" />
       </a>
       <br />
       <h3>Endpoint &amp; Desktop</h3>
@@ -33,7 +33,7 @@ Select the Kinnector product line that matches your deployment and security requ
     </td>
     <td align="center" valign="top" width="33%">
       <a href="#-warden-fleet-central">
-        <img src="assets/warden.svg" alt="Kinnector Warden" width="100%" style="border-radius: 8px; border: 1px solid #8b5cf6;" />
+        <img src="assets/warden.svg" alt="**kinnector** Warden" width="100%" style="border-radius: 8px; border: 1px solid #8b5cf6;" />
       </a>
       <br />
       <h3>Warden Central Fleet</h3>
@@ -108,7 +108,7 @@ For protecting WordPress instances from remote file inclusion, arbitrary code ex
 
 ## ⚙️ Shared Core Components
 
-Common libraries, design systems, and database configurations shared across all Kinnector products:
+Common libraries, design systems, and database configurations shared across all **kinnector** products:
 
 * **[kinnector-config](src/kinnector-config)**: High-performance configuration library written in Rust and C++ for parsing and validating cryptographically signed rules.
 * **[kinnector-protect-community](src/kinnector-protect-community)**: The central catalog of open security rules, attack indicators, allowlists, and detection signatures.
